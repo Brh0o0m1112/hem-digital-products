@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+    <html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SwiftPlus - كتب تعليمية رقمية للأطفال قابلة للطباعة</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary: #ff6b6b;
+                --secondary: #4ecdc4;
+                --accent: #ffe66d;
+                --dark: #2f2e41;
+                --light: #f7f9fc;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Cairo', sans-serif;
+            }
+
+            body {
+                background-color: var(--light);
+                color: var(--dark);
+                line-height: 1.6;
+            }
+
+            /* Header / Navbar */
+            header {
+                background: #ffffff;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                padding: 15px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .logo {
+                font-size: 26px;
+                font-weight: 900;
+                color: var(--primary);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .logo span { color: var(--secondary); }
+
+            /* Hero Section */
+            .hero {
+                background: linear-gradient(135deg, #fff5f5 0%, #e6fffa 100%);
+                padding: 60px 5% 80px;
+                text-align: center;
+                border-bottom-left-radius: 40px;
+                border-bottom-right-radius: 40px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+                font-weight: 900;
+                color: var(--dark);
+                margin-bottom: 15px;
+            }
+
+            .hero p {
+                font-size: 18px;
+                color: #666;
+                max-width: 650px;
+                margin: 0 auto 30px;
+            }
+
+            .badge-pill {
+                background: var(--accent);
+                color: #8a6d00;
+                padding: 6px 16px;
+                border-radius: 20px;
+                font-size: 14px;
+                font-weight: 700;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+
+            /* Products Grid */
+            .products-section {
+                padding: 60px 5%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                text-align: center;
+                font-size: 28px;
+                font-weight: 800;
+                margin-bottom: 40px;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+
+            .card {
+                background: #fff;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border: 2px solid #f0f0f0;
+            }
+
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+
+            .card-img {
+                width: 100%;
+                height: 250px;
+                background: #eee;
+                object-fit: cover;
+                border-bottom: 2px solid #f0f0f0;
+            }
+
+            .card-body {
+                padding: 25px;
+                flex-grow: 1;
+            }
+
+            .card-title {
+                font-size: 22px;
+                font-weight: 800;
+                margin-bottom: 10px;
+                color: var(--dark);
+            }
+
+            .card-desc {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 20px;
+            }
+
+            .features-list {
+                list-style: none;
+                margin-bottom: 20px;
+            }
+
+            .features-list li {
+                font-size: 13px;
+                color: #555;
+                margin-bottom: 6px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .card-footer {
+                padding: 0 25px 25px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+            }
+
+            .price {
+                font-size: 22px;
+                font-weight: 900;
+                color: var(--primary);
+            }
+
+            .btn {
+                background: var(--primary);
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 12px;
+                text-decoration: none;
+                font-weight: 700;
+                transition: 0.2s;
+                text-align: center;
+                display: inline-block;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            .btn-secondary {
+                background: var(--secondary);
+            }
+
+            .contact {
+                width: 200px;
+            }
+
+            .btn:hover {
+                opacity: 0.9;
+            }
+
+            /* Guarantee Bar */
+            .guarantee {
+                background: #fff;
+                margin: 40px 5%;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            footer {
+                text-align: center;
+                padding: 30px;
+                color: #888;
+                font-size: 14px;
+                border-top: 1px solid #eee;
+                margin-top: 50px;
+            }
+
+            /* ==================== تصميم السلة الاحترافية ==================== */
+            .cart-icon-btn {
+                position: relative;
+                background: #f1f5f9;
+                border: none;
+                padding: 10px 18px;
+                border-radius: 12px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: #2f2e41;
+                transition: 0.2s;
+            }
+
+            .cart-icon-btn:hover { background: #e2e8f0; }
+
+            .cart-badge {
+                background: #ff6b6b;
+                color: #fff;
+                border-radius: 50%;
+                padding: 2px 8px;
+                font-size: 12px;
+                font-weight: 900;
+            }
+
+            /* الشاشة الجانبية للسلة */
+            .cart-overlay {
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: none;
+                z-index: 200;
+            }
+
+            .cart-drawer {
+                position: fixed;
+                top: 0; left: -400px; width: 350px; height: 100%;
+                background: #fff;
+                box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+                z-index: 201;
+                transition: left 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .cart-drawer.active { left: 0; }
+            .cart-overlay.active { display: block; }
+
+            .cart-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 2px solid #f0f0f0;
+                padding-bottom: 15px;
+                margin-bottom: 20px;
+            }
+
+            .cart-header h3 { font-size: 20px; font-weight: 800; }
+            .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #888; }
+
+            .cart-items { flex-grow: 1; overflow-y: auto; }
+
+            .cart-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #f8fafc;
+                padding: 12px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+
+            .cart-item-title { font-size: 14px; font-weight: 700; }
+            .cart-item-price { font-size: 14px; color: #ff6b6b; font-weight: 800; }
+
+            .remove-item {
+                background: none; border: none; color: #ef4444;
+                cursor: pointer; font-size: 16px; margin-right: 8px;
+            }
+
+            .cart-footer {
+                border-top: 2px solid #f0f0f0;
+                padding-top: 20px;
+            }
+
+            .total-row {
+                display: flex;
+                justify-content: space-between;
+                font-size: 18px;
+                font-weight: 800;
+                margin-bottom: 15px;
+            }
+
+            .checkout-btn {
+                background: #25D366;
+                color: #fff;
+                padding: 14px;
+                border-radius: 12px;
+                width: 100%;
+                border: none;
+                font-size: 16px;
+                font-weight: 800;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+            }
+
+            .checkout-btn:hover { 
+                background: #1eb854; 
+            }
+
+            /* زر الواتساب العائم */
+            .whatsapp-float {
+                position: fixed;
+                bottom: 25px;
+                left: 25px; /* ضعها right: 25px إذا أردته بالجهة اليمنى */
+                background-color: #25d366;
+                color: #fff;
+                border-radius: 50px;
+                padding: 12px 20px;
+                font-size: 15px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                text-decoration: none;
+                z-index: 999;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .whatsapp-float:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+                color: #fff;
+            }
+
+            .whatsapp-icon {
+                width: 24px;
+                height: 24px;
+                fill: currentColor;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <a href=""><img src="swiftplus-logo.png" alt="" width="70px" height="70px"></a>
+            <button class="cart-icon-btn" onclick="toggleCart()">
+                🛒 السلة <span class="cart-badge" id="cartCount">0</span>
+            </button>
+        </header>
+
+        <section class="hero">
+            <span class="badge-pill">⚡ تحميل فوري بعد الشراء PDF</span>
+            <h1>علم طفلك بأسلوب ممتع من المنزل!</h1>
+            <p>كتب تمارين وتلوين عالية الجودة مصممة خصيصاً لتطوير مهارات الكتابة، التتبع، والتركيز للأطفال جاهزة للطباعة الفورية.</p>
+        </section>
+
+        <section class="products-section">
+            <!-- <h2 class="section-title">إصداراتنا الرقمية 📖</h2> -->
+            
+            <div class="grid">
+                
+                <!-- المنتج الأول: كتاب الحروف -->
+                <div class="card">
+                    <div>
+                        <!-- استبدل alphabet-cover.jpg برابط صورة غلاف كتاب الحروف -->
+                        <img src="غلاف كتاب الاطفال للحروف.jpg" alt="كتاب الحروف الهجائية" class="card-img" >
+                        <div class="card-body">
+                            <h3 class="card-title">كتاب الحروف الهجائية</h3>
+                            <p class="card-desc">28 صفحة تفاعلية لتأسيس الطفل في قراءة، تتبع، وتلوين الحروف العربية مع رسمات كرتونية ممتعة.</p>
+                            <ul class="features-list">
+                                <li>✅ أسطر تتبع بالقلم </li>
+                                <li>✅ رسمات كرتونية لكل حرف</li>
+                                <li>✅ تكرار الحروف للتلوين والتثبيت</li>
+                                <li>✅ ملف PDF جاهز للطباعة فوراً A4</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <span class="price">20 ر.س</span>
+                        </div>
+                        <!-- للمنتج الأول -->
+                        <button class="btn" onclick="addToCart('كتاب الحروف الهجائية الشامل', 20)">
+                            إضافة للسلة 🛒
+                        </button>
+                    </div>
+                </div>
+
+                <!-- المنتج الثاني: كتاب الأرقام والأشكال -->
+                <div class="card">
+                    <div>
+                        <!-- استبدل numbers-cover.jpg برابط صورة غلاف كتاب الأرقام -->
+                        <img src="غلاف كتاب الاطفال للارقام.jpg" alt="كتاب الأرقام والأشكال" class="card-img" >
+                        <div class="card-body">
+                            <h3 class="card-title">كتاب تمارين الأرقام العربية</h3>
+                            <p class="card-desc">تمارين لتعليم الطفل العد من 1 إلى 20 مع تتبع وتلوين الأرقام.</p>
+                            <ul class="features-list">
+                                <li>✅ تمارين عد الأرقام</li>
+                                <li>✅ أرقام كبيرة مفرغة للتلوين</li>
+                                <li>✅ خطوط تتبع الأرقام والأسماء</li>
+                                <li>✅ ملف PDF جاهز للطباعة فوراً A4</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <span class="price">20 ر.س</span>
+                        </div>
+                        <!-- للمنتج الثاني -->
+                        <button class="btn" onclick="addToCart('كتاب الأرقام والأشكال التفاعلي', 20)">
+                            إضافة للسلة 🛒
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="guarantee">
+            <h3 style="margin-bottom: 8px;">🖨️ كيف تحصّل على الكتاب؟</h3>
+            <p style="color: #666; font-size: 15px;">بمجرد إتمام الطلب، سيصلك رابط تحميل مباشر لملفات الـ PDF بجودة عالية جداً لطباعتها بقدر ما تشاء!</p>
+        </div>
+
+        <!-- عناصر نافذة السلة الجانبية -->
+        <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h3>سلة التسوق 🛒</h3>
+                <button class="close-btn" onclick="toggleCart()">✕</button>
+            </div>
+
+            <div class="cart-items" id="cartItemsContainer">
+                <p style="text-align: center; color: #888; margin-top: 30px;">السلة فارغة حالياً</p>
+            </div>
+
+            <div class="cart-footer">
+                <div class="total-row">
+                    <span>الإجمالي:</span>
+                    <span id="cartTotal">0 ر.س</span>
+                </div>
+                <button class="checkout-btn" onclick="checkoutWhatsApp()">إتمام الطلب عبر الواتساب 📲</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 SwiftPlus Store - جميع الحقوق محفوظة</p>
+        </footer>
+
+        <!-- زر الواتساب العائم -->
+        <a href="https://wa.me/966538099852?text=مرحباً%20SwiftPlus!%20عندي%20استفسار%20بخصوص%20الكتب%20التعليمية" 
+        class="whatsapp-float" 
+        target="_blank" 
+        title="تواصل معنا عبر الواتساب">
+            <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18.1-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18.1-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+            <span>تواصل معنا</span>
+        </a>
+
+        <script>
+            let cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+
+            function saveCart() {
+                localStorage.setItem('swiftCart', JSON.stringify(cart));
+                updateCartUI();
+            }
+
+            function toggleCart() {
+                document.getElementById('cartDrawer').classList.toggle('active');
+                document.getElementById('cartOverlay').classList.toggle('active');
+            }
+
+            function addToCart(title, price) {
+                const existingItem = cart.find(item => item.title === title);
+                if (existingItem) {
+                    existingItem.qty += 1;
+                } else {
+                    cart.push({ title, price, qty: 1 });
+                }
+                saveCart();
+                toggleCart(); // فتح السلة تلقائياً عند إضافة منتج
+            }
+
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                saveCart();
+            }
+
+            function updateCartUI() {
+                const container = document.getElementById('cartItemsContainer');
+                const cartCount = document.getElementById('cartCount');
+                const cartTotal = document.getElementById('cartTotal');
+
+                let total = 0;
+                let count = 0;
+
+                if (cart.length === 0) {
+                    container.innerHTML = `<p style="text-align: center; color: #888; margin-top: 30px;">السلة فارغة حالياً</p>`;
+                } else {
+                    container.innerHTML = cart.map((item, index) => {
+                        total += item.price * item.qty;
+                        count += item.qty;
+                        return `
+                            <div class="cart-item">
+                                <div>
+                                    <div class="cart-item-title">${item.title} (x${item.qty})</div>
+                                    <div class="cart-item-price">${item.price * item.qty} ر.س</div>
+                                </div>
+                                <button class="remove-item" onclick="removeFromCart(${index})">🗑️</button>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                cartCount.innerText = count;
+                cartTotal.innerText = total + ' ر.س';
+            }
+
+            function checkoutWhatsApp() {
+                if (cart.length === 0) {
+                    alert('السلة فارغة! قم بإضافة كتب أولاً.');
+                    return;
+                }
+
+                // غير الرقم أدناه برقم الواتساب الخاص بك بالصيغة الدولية (بدون + أو أصفار)
+                const myPhoneNumber = "966538099852"; 
+
+                let message = "مرحباً SwiftPlus! 👋%0Aأود طلب الكتب التالية:%0A%0A";
+                let total = 0;
+
+                cart.forEach(item => {
+                    message += `• ${item.title} (العدد: ${item.qty}) - ${item.price * item.qty} ر.س%0A`;
+                    total += item.price * item.qty;
+                });
+
+                message += `%0A*الإجمالي: ${total} ر.س*%0Aيرجى تزويدي برابط التحميل/الدفع.`;
+
+                window.open(`https://wa.me/${myPhoneNumber}?text=${message}`, '_blank');
+            }
+
+            // تحديث السلة تلقائياً عند فتح الصفحة
+            updateCartUI();
+        </script>
+
+    </body>
+</html>
