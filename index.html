@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SwiftPlus - كتب تعليمية رقمية للأطفال قابلة للطباعة</title>
+        <title>كتب تعليمية رقمية للأطفال قابلة للطباعة</title>
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
         <style>
             :root {
-                --primary: #ff6b6b;
+                --primary: #0284c7;
                 --secondary: #4ecdc4;
                 --accent: #ffe66d;
                 --dark: #2f2e41;
@@ -76,8 +76,8 @@
             }
 
             .badge-pill {
-                background: var(--accent);
-                color: #8a6d00;
+                background: #0284c7;
+                color: white;
                 padding: 6px 16px;
                 border-radius: 20px;
                 font-size: 14px;
@@ -204,18 +204,6 @@
                 opacity: 0.9;
             }
 
-            /* Guarantee Bar */
-            .guarantee {
-                background: #fff;
-                margin: 40px 5%;
-                padding: 30px;
-                border-radius: 20px;
-                text-align: center;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-                max-width: 900px;
-                margin-left: auto;
-                margin-right: auto;
-            }
 
             footer {
                 text-align: center;
@@ -246,7 +234,7 @@
             .cart-icon-btn:hover { background: #e2e8f0; }
 
             .cart-badge {
-                background: #ff6b6b;
+                background: #0284c7;
                 color: #fff;
                 border-radius: 50%;
                 padding: 2px 8px;
@@ -374,6 +362,119 @@
                 fill: currentColor;
             }
 
+
+            /* معاينة الصفحات الداخلية */
+            .preview-title {
+                font-size: 13px;
+                font-weight: 700;
+                color: #666;
+                margin: 15px 0 8px;
+            }
+
+            .pages-preview {
+                text-align: center;
+            }
+
+            .preview-thumb {
+                width: 200px;
+                height: 290px;
+                object-fit: cover;
+                border-radius: 8px;
+                border: 1px solid #e2e8f0;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            .preview-thumb:hover {
+                transform: scale(1.05);
+                border-color: var(--primary);
+            }
+
+            /* قسم تحميل العينة المجانية */
+            .free-sample-box {
+                background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+                border: 2px dashed #0284c7;
+                border-radius: 16px;
+                padding: 20px;
+                margin: 25px 0;
+                text-align: center;
+            }
+
+            .free-sample-title {
+                font-size: 16px;
+                font-weight: 800;
+                color: #0369a1;
+                margin-bottom: 6px;
+            }
+
+            .free-sample-desc {
+                font-size: 13px;
+                color: #334155;
+                margin-bottom: 15px;
+            }
+
+            .btn-download-sample {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background-color: #0284c7;
+                color: #ffffff !important;
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-size: 14px;
+                font-weight: 700;
+                text-decoration: none;
+                transition: all 0.2s ease;
+                box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            }
+
+            .btn-download-sample:hover {
+                background-color: #0369a1;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+            }
+
+            /* قسم خطوات الشراء والاستلام */
+            .how-it-works {
+                background: #ffffff;
+                padding: 40px 5%;
+                border-radius: 24px;
+                max-width: 1000px;
+                margin: 40px auto;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+                text-align: center;
+            }
+
+            .steps-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+                margin-top: 25px;
+            }
+
+            .step-box {
+                background: #f8fafc;
+                padding: 20px;
+                border-radius: 16px;
+                border: 1px solid #e2e8f0;
+            }
+
+            .step-num {
+                background: var(--primary);
+                color: #fff;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 12px;
+                font-weight: 800;
+            }
+
+            .step-box h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+            .step-box p { font-size: 13px; color: #666; }
+
         </style>
     </head>
     <body>
@@ -386,7 +487,7 @@
         </header>
 
         <section class="hero">
-            <span class="badge-pill">⚡ تحميل فوري بعد الشراء PDF</span>
+            <span class="badge-pill">تحميل فوري بعد الشراء PDF</span>
             <h1>علم طفلك بأسلوب ممتع من المنزل!</h1>
             <p>كتب تمارين وتلوين عالية الجودة مصممة خصيصاً لتطوير مهارات الكتابة، التتبع، والتركيز للأطفال جاهزة للطباعة الفورية.</p>
         </section>
@@ -400,8 +501,22 @@
                 <div class="card">
                     <div>
                         <!-- استبدل alphabet-cover.jpg برابط صورة غلاف كتاب الحروف -->
-                        <img src="غلاف كتاب الاطفال للحروف.jpg" alt="كتاب الحروف الهجائية" class="card-img" >
+                        <img src="letter-product.png" alt="كتاب الحروف الهجائية" class="card-img" >
                         <div class="card-body">
+
+                            <!-- معاينة داخلية لكتاب الحروف -->
+                            <div class="preview-title">👁️ معاينة من داخل الكتاب:</div>
+                            <div class="pages-preview">
+                                <img src="letter-review.png" class="preview-thumb" alt="صفحة من الكتاب" >
+                            </div>
+
+                            <div class="free-sample-box">
+                                <!-- رابط التحميل المباشر -->
+                                <a href="letter-review.pdf" target="_blank" download class="btn-download-sample">
+                                   يمكنك مشاهدة وتحميل صفحة عينة من الكتاب بالضغط هنا
+                                </a>
+                            </div>
+
                             <h3 class="card-title">كتاب الحروف الهجائية</h3>
                             <p class="card-desc">28 صفحة تفاعلية لتأسيس الطفل في قراءة، تتبع، وتلوين الحروف العربية مع رسمات كرتونية ممتعة.</p>
                             <ul class="features-list">
@@ -427,8 +542,22 @@
                 <div class="card">
                     <div>
                         <!-- استبدل numbers-cover.jpg برابط صورة غلاف كتاب الأرقام -->
-                        <img src="غلاف كتاب الاطفال للارقام.jpg" alt="كتاب الأرقام والأشكال" class="card-img" >
+                        <img src="number-product.png" alt="كتاب الأرقام والأشكال" class="card-img" >
                         <div class="card-body">
+
+                            <!-- معاينة داخلية لكتاب الأرقام -->
+                            <div class="preview-title">👁️ معاينة من داخل الكتاب:</div>
+                            <div class="pages-preview">
+                                <img src="number-review.png" class="preview-thumb" alt="صفحة من الكتاب" >
+                            </div>
+
+                            <div class="free-sample-box">
+                                <!-- رابط التحميل المباشر -->
+                                <a href="number-review.pdf" target="_blank" download class="btn-download-sample">
+                                   يمكنك مشاهدة وتحميل صفحة عينة من الكتاب بالضغط هنا
+                                </a>
+                            </div>
+
                             <h3 class="card-title">كتاب تمارين الأرقام العربية</h3>
                             <p class="card-desc">تمارين لتعليم الطفل العد من 1 إلى 20 مع تتبع وتلوين الأرقام.</p>
                             <ul class="features-list">
@@ -449,14 +578,32 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <div class="guarantee">
-            <h3 style="margin-bottom: 8px;">🖨️ كيف تحصّل على الكتاب؟</h3>
-            <p style="color: #666; font-size: 15px;">بمجرد إتمام الطلب، سيصلك رابط تحميل مباشر لملفات الـ PDF بجودة عالية جداً لطباعتها بقدر ما تشاء!</p>
-        </div>
+        <section class="how-it-works">
+            <h2 style="font-size: 24px; font-weight: 800;">كيف تستلم ملفاتك بـ 3 خطوات بسيطة؟ </h2>
+
+            <div class="steps-grid">
+                <div class="step-box">
+                    <div class="step-num">1</div>
+                    <h4>اختر الكتب المطلوبة</h4>
+                    <p>أضف الكتب المطلوبة لسلتك ثم اضغط إتمام الطلب عبر الواتساب.</p>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">2</div>
+                    <h4>الدفع</h4>
+                    <p>(تحويل بنكي / STC Pay).</p>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-num">3</div>
+                    <h4>استلام فوري PDF</h4>
+                    <p>سيصلك رابط تحميل مباشر لملفاتك بجودة عالية للطباعة الفورية!</p>
+                </div>
+            </div>
+        </section>
 
         <!-- عناصر نافذة السلة الجانبية -->
         <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
@@ -480,7 +627,7 @@
         </div>
 
         <footer>
-            <p>© 2026 SwiftPlus Store - جميع الحقوق محفوظة</p>
+            <p>© 2026 HEM DIGITAL PRODUCTS - جميع الحقوق محفوظة</p>
         </footer>
 
         <!-- زر الواتساب العائم -->
